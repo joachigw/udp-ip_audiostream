@@ -51,20 +51,20 @@ public class UDPTestServer {
 
                 System.out.printf("""
                                 RECEIVED DATAGRAM
-                                 -hostname %s
-                                 -port %d
-                                 -sequence %d
-                                 -timestamp %d
-                                 -audio data %d bytes
-                                 -latency %d ms
+                                 -hostname   %s
+                                 -port       %d
+                                 -sequence   %d
+                                 -timestamp  %d
+                                 -audio data %d (bytes)
+                                 -latency    %d (ms)
                                 
                                 """,
                         senderHostname, senderPort, sequence, timestamp, audioData.length, currTimestamp-timestamp);
             }
         } catch (IOException e) {
-            System.out.printf("An IO-related error occurred. Error: '%s'\n", e.getMessage());
+            System.err.printf("An IO-related error occurred. Error: '%s'\n", e.getMessage());
         } catch (IllegalArgumentException e) {
-            System.out.printf("Error parsing metadata from received packet. Error: '%s'\n", e.getMessage());
+            System.err.printf("Error parsing metadata from received packet. Error: '%s'\n", e.getMessage());
         }
     }
 }
